@@ -1,6 +1,6 @@
 import unittest
 import os
-from pylogger import chainsaw as cs
+from maplewood import chainsaw as cs
 
 class TestChainsaw(unittest.TestCase):
     
