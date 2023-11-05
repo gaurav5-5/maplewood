@@ -1,13 +1,17 @@
 import unittest
-import os
-from maplewood import chainsaw as cs
+import os, shutil
+from src.maplewood import chainsaw as cs
 
 class TestChainsaw(unittest.TestCase):
     
     def setUp(self):
         self.chainsaw = cs.Chainsaw(fdir='tests', fname='test_log.txt', module="unittest")
+            
+    def tearDown(self) -> None:
         if os.path.isfile('./tests/test_log.txt'):
             os.remove('./tests/test_log.txt')
+        if os.path.isfile('./tests/logs/a/test_log.txt'):
+            shutil.rmtree('./tests/logs/')
         
     def test_open(self):
         self.chainsaw.open()
@@ -23,6 +27,10 @@ class TestChainsaw(unittest.TestCase):
             log_content = f.read()
         self.assertIn('Test message', log_content)
         self.assertIn('PASS', log_content)
+        
+    def test_directory_not_exists(self):
+        cs.Chainsaw(fdir='tests/logs/a', fname='test_log')
+        self.assertTrue(os.path.isdir('./tests/logs/a'))
 
     def test_write_not_open(self):
         with self.assertRaises(RuntimeError):

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "maplewood"
-version = "0.1"
+version = "0.2"
 authors = [
     {name = "Gaurav"}
 ]
@@ -14,7 +14,7 @@ readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: MIT License",
+    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"
 ]
 

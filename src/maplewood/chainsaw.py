@@ -28,13 +28,19 @@ class Chainsaw:
         self.__default_failure = failure_msg
         self.__default_success = success_msg
         
+        if not os.path.isdir(fdir):
+            os.makedirs(fdir)
+        
         dir_sep = '/'
-        if fdir[-1] == '/' or fdir[-1] == '\\':
-            dir_sep = ''
-        elif '\\' in fdir:
-            dir_sep = '\\'
-        elif '/' in fdir:
-            dir_sep = '/'
+        if fdir:        
+            if fdir[-1] == '/' or fdir[-1] == '\\':
+                dir_sep = ''
+            elif '\\' in fdir:
+                dir_sep = '\\'
+            elif '/' in fdir:
+                dir_sep = '/'
+        else:
+            dir_sep = './'
                             
         self.__fpath = fdir + dir_sep + fname
 
